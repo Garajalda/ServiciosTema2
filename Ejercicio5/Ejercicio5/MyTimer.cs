@@ -26,14 +26,18 @@ namespace Ejercicio5
             {
 
                     
-                    while (ejecutar)
-                    {
+                if (!ejecutar)
+                {
+                    Monitor.Wait(l);
+                }
+                while (ejecutar)
+                {
+                               
+                    increment(); 
+                    Thread.Sleep(interval);
                         
-                        increment();
-                        ejecutar = false; 
-                        Thread.Sleep(interval);
-                        
-                    }
+                   
+                }
 
                 
                 
@@ -47,21 +51,8 @@ namespace Ejercicio5
             {
                 
                 ejecutar = true;
-                if (ejecutar)
-                {
-                    Monitor.Pulse(l);
-                     foo();
-                }
-                else
-                {
-                    ejecutar = false;
-                    Monitor.Wait(l);
-                }
-
-               
-                
-                
-                    
+                Monitor.Pulse(l);
+      
                 
             }
             
@@ -73,17 +64,6 @@ namespace Ejercicio5
             lock (l)
             {
                 ejecutar = false;
-                if (!ejecutar)
-                {
-
-                    Monitor.Pulse(l);
-                }
-                else
-                {
-                    ejecutar = true;
-                    Monitor.Wait(l);
-                }
-               
 
             }
         }
@@ -94,8 +74,8 @@ namespace Ejercicio5
             
             increment = d;
             Thread hilo = new Thread(foo);
-           
             hilo.Start();
+          
             
             
         }

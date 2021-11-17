@@ -33,11 +33,8 @@ namespace Ejercicio5
                 t.run();
                 Console.WriteLine("Press any key to pause.");
                 Console.ReadKey();
-                if (counter == 5)
-                {
-
-                    t.pause();
-                }
+                t.pause();
+                
 
                 Console.WriteLine("Press 1 to restart or Enter to end.");
                 op = Console.ReadLine();
