@@ -23,7 +23,7 @@ namespace Ejercicio6
         {
             int aleatorio = 0;
     
-            while (true)
+            while (!meta)
             {
                 
 
@@ -72,7 +72,7 @@ namespace Ejercicio6
         public static void player2()
         {
             int aleatorio = 0;
-            while (true)
+            while (!meta)
             {
                 lock (l)
                 {
@@ -109,13 +109,10 @@ namespace Ejercicio6
         public static void display()
         {
             
-            string[] caracter = new string[4];
-            caracter[0] = "|";
-            caracter[1] = "/";
-            caracter[2] = "_";
-            caracter[3] = "\\";
+            string[] caracter = new string[] { "|", "/", "_", "\\" };
+            
             int caracterId = 0;
-            while (true)
+            while (!meta)
             {
 
 

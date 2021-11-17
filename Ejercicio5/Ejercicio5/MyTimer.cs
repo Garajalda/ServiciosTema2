@@ -36,10 +36,10 @@ namespace Ejercicio5
                         }
 
                         increment();
-                        Thread.Sleep(interval);  
                    
                    
                     }
+                        Thread.Sleep(interval);  
 
                 
                 
