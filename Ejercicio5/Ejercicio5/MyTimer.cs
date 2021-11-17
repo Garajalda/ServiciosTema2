@@ -14,7 +14,8 @@ namespace Ejercicio5
 
         public int interval = 0;
         
-        bool ejecutar = false;
+
+        bool pausar = true;
         
         
         static object l = new object();
@@ -22,51 +23,57 @@ namespace Ejercicio5
 
         public void foo()
         {
-            lock (l)
-            {
-
+                
+                while (true)
+                {
+                    lock (l)
+                    {
                     
-                if (!ejecutar)
-                {
-                    Monitor.Wait(l);
-                }
-                while (ejecutar)
-                {
-                               
-                    increment(); 
-                    Thread.Sleep(interval);
-                        
+                        if (pausar)
+                        {
+                            Monitor.Wait(l);
+                  
+                        }
+
+                        increment();
+                        Thread.Sleep(interval);  
                    
+                   
+                    }
+
+                
+                
+
                 }
-
-                
-                
-
-            }
             
         }
         public void run()
         {
-            lock (l)
-            {
-                
-                ejecutar = true;
-                Monitor.Pulse(l);
+          
+                lock (l)
+                {
+                    pausar = false;
+                    Monitor.Pulse(l);
+
                 
       
                 
-            }
+                }
+
+            
             
         }
 
         public void pause()
         {
-            
-            lock (l)
-            {
-                ejecutar = false;
+           
 
-            }
+                lock (l)
+                {
+                    pausar = true;
+                }
+            
+            
         }
 
         
