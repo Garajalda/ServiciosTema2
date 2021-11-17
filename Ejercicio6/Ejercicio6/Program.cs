@@ -150,13 +150,14 @@ namespace Ejercicio6
 
             Thread hiloPlayer1 = new Thread(player1);
             hiloPlayer1.Start();
-            hiloPlayer1.IsBackground = true;
+            
             Thread hiloPlayer2 = new Thread(player2);
             hiloPlayer2.Start();
-            hiloPlayer2.IsBackground = true;
+          
             Thread hiloDisplay = new Thread(display);
             hiloDisplay.Start();
-            hiloDisplay.IsBackground = true;
+
+            
 
             
             while (!meta)
